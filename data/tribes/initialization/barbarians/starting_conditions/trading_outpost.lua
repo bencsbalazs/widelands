@@ -71,33 +71,8 @@ init = {
          },
          -- Max health: 3, Max attack: 5, Max defense: 0, Max evade: 2
          soldiers = {
-            [{0,0,0,0}] = 35,
-            [{1,0,0,1}] = 5,
-            [{1,1,0,0}] = 5,
+            [{3,5,0,2}] = 5000
          }
-      })
-
-      place_building_in_region(player, "barbarians_metal_workshop", sf:region(11), {
-         inputs = {
-            iron = 8,
-            log = 8
-         }
-      })
-
-      place_building_in_region(player, "barbarians_wood_hardener", sf:region(11), {
-         inputs = {
-            log = 8
-         }
-      })
-
-      place_building_in_region(player, "barbarians_hunters_hut", sf:region(11), {
-         inputs = {}
-      })
-
-      place_building_in_region(player, "barbarians_tower", sf:region(13), {
-         soldiers = {
-            [{0,0,0,0}] = 1,
-         },
       })
 
       -- Get all warehouse types
@@ -111,8 +86,8 @@ init = {
       -- index of a warehouse we will add to. Used to 'rotate' warehouses
       local idx = 1
 
-      for i=1,100000 do
-      sleep(300000)
+      while (true) do
+      sleep(3000)
 
       -- collect all ~warehouses and pick one to insert the wares
       local warehouses = {}
@@ -121,12 +96,6 @@ init = {
       end
 
       if #warehouses > 0 then
-
-         -- adding to a warehouse with index idx, if out of range, adding to wh 1
-          if idx > #warehouses then
-            idx = 1
-         end
-
          local wh = warehouses[idx]
          local added = 0
 
@@ -170,8 +139,6 @@ init = {
          if (added > 0) then
             print (player.number..": "..added.." types of ware added to warehouse "..idx.." of "..#warehouses.." (cheating mode)")
          end
-
-         idx = idx + 1
       end
    end
 end
