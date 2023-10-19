@@ -76,34 +76,10 @@ init = {
          },
          -- Max health: 4, Max attack: 4, Max defense: 0, Max evade: 2
          soldiers = {
-            [{0,0,0,0}] = 35,
-            [{1,0,0,1}] = 5,
-            [{1,1,0,0}] = 5,
+            [{4,4,0,2}] = 5000
          }
       })
 
-      place_building_in_region(player, "empire_toolsmithy", sf:region(11), {
-         inputs = {
-            iron = 8,
-            log = 8
-         }
-      })
-
-      place_building_in_region(player, "empire_sawmill", sf:region(11), {
-         inputs = {
-            log = 8
-         }
-      })
-
-      place_building_in_region(player, "empire_hunters_house", sf:region(11), {
-         inputs = {}
-      })
-
-      place_building_in_region(player, "empire_tower", sf:region(13), {
-         soldiers = {
-            [{0,0,0,0}] = 1,
-         },
-      })
 
       -- Get all warehouse types
       local warehouse_types = {}
@@ -116,8 +92,8 @@ init = {
       -- index of a warehouse we will add to. Used to 'rotate' warehouses
       local idx = 1
 
-      for i=1,100000 do
-      sleep(300000)
+      while (true) do
+      sleep(3000)
 
       -- collect all ~warehouses and pick one to insert the wares
       local warehouses = {}
@@ -156,8 +132,8 @@ init = {
          if wh:get_wares("fish") < 50 then
             wh:set_wares("fish", wh:get_wares("fish") + 1)
          end
-         if wh:get_wares("gold") < 50 then
-            wh:set_wares("gold", wh:get_wares("gold") + 1)
+         if wh:get_wares("gold_ore") < 50 then
+            wh:set_wares("gold_ore", wh:get_wares("gold_ore") + 1)
          end
          if player:get_wares("wheat") < 60 + #warehouses * 10 then
             wh:set_wares("wheat", wh:get_wares("wheat") + 10 + #warehouses * 2)
@@ -171,8 +147,6 @@ init = {
          if (added > 0) then
             print (player.number..": "..added.." types of ware added to warehouse "..idx.." of "..#warehouses.." (cheating mode)")
          end
-
-         idx = idx + 1
       end
    end
 end

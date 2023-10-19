@@ -22,8 +22,8 @@ wl.Descriptions():new_warehouse_type {
 
    aihints = {},
 
-   heal_per_second = 220,
-   conquers = 9,
+   heal_per_second = 2200,
+   conquers = 50,
 }
 
 pop_textdomain()

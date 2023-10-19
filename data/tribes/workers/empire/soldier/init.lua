@@ -107,33 +107,33 @@ wl.Descriptions():new_soldier_type {
    descname = pgettext("empire_worker", "Soldier"),
    animation_directory = dirname,
    icon = dirname .. "menu.png",
-   vision_range = 2,
+   vision_range = 6,
 
    spritesheets = spritesheets,
 
    -- Battle attributes - initial values and per level increase
    health = {
       max_level = 4,
-      base = 13000,
+      base = 150000,
       increase_per_level = 2100,
       pictures = path.list_files(dirname .. "health_level?.png"),
    },
    attack = {
       max_level = 4,
-      base = 1300,
-      maximum = 1500,
+      base = 13000,
+      maximum = 20000,
       increase_per_level = 920,
       pictures = path.list_files(dirname .. "attack_level?.png"),
    },
    defense = {
       max_level = 0,
-      base = 5,
+      base = 50,
       increase_per_level = 5,
       pictures = path.list_files(dirname .. "defense_level?.png"),
    },
    evade = {
       max_level = 2,
-      base = 30,
+      base = 3000,
       increase_per_level = 16,
       pictures = path.list_files(dirname .. "evade_level?.png"),
    },

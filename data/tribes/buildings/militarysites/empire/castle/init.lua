@@ -22,8 +22,8 @@ wl.Descriptions():new_militarysite_type {
    aihints = {},
 
    max_soldiers = 12,
-   heal_per_second = 220,
-   conquers = 12,
+   heal_per_second = 2200,
+   conquers = 42,
    prefer_heroes = true,
 
    messages = {
