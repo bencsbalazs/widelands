@@ -26,8 +26,9 @@ wl.Descriptions():new_warehouse_type {
 
    aihints = {},
 
-   heal_per_second = 5000,
-   conquers = 30,
+   heal_per_second = 220,
+   conquers = 9,
+   max_garrison = 20,
 }
 
 pop_textdomain()
