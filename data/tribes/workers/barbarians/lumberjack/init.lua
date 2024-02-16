@@ -8,7 +8,7 @@ wl.Descriptions():new_worker_type {
    descname = pgettext("barbarians_worker", "Lumberjack"),
    animation_directory = dirname,
    icon = dirname .. "menu.png",
-   vision_range = 2,
+   vision_range = 8,
 
    buildcost = {
       barbarians_carrier = 1,
@@ -22,10 +22,10 @@ wl.Descriptions():new_worker_type {
          -- max. worker time: 2 * 13 * 1.8 + 15 + 2 = 63.8 sec
          -- avg. worker time: 2 * 7.5 * 1.8 + 15 + 2 = 44 sec
          -- some of trees delay woodcutting by 1-1.4 sec (aspen, balsa, ironwood, oak, rubber)
-         "findobject=attrib:tree radius:10",
+         "findobject=attrib:tree radius:20",
          "walk=object",
          "playsound=sound/woodcutting/woodcutting priority:100% allow_multiple",
-         "animate=hack duration:15s",
+         "animate=hack duration:10s",
          "playsound=sound/woodcutting/tree_falling priority:100%",
          "callobject=fall",
          "animate=idle duration:2s",

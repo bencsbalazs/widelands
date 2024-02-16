@@ -50,8 +50,8 @@ wl.Descriptions():new_warehouse_type {
       prohibited_till = 1000
    },
 
-   conquers = 5,
-   heal_per_second = 170,
+   conquers = 15,
+   heal_per_second = 2500,
 }
 
 pop_textdomain()

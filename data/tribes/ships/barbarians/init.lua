@@ -9,11 +9,11 @@ wl.Descriptions():new_ship_type {
    animation_directory = dirname,
    icon = dirname .. "menu.png",
    capacity = 30,
-   vision_range = 4,
+   vision_range = 8,
 
    spritesheets = {
       idle = {
-         fps = 10,
+         fps = 20,
          frames = 40,
          rows = 7,
          columns = 6,

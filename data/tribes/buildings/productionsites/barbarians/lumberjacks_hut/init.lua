@@ -40,7 +40,7 @@ wl.Descriptions():new_productionsite_type {
    },
 
    working_positions = {
-      barbarians_lumberjack = 1
+      barbarians_lumberjack = 3
    },
 
    programs = {
@@ -53,7 +53,7 @@ wl.Descriptions():new_productionsite_type {
             -- max. time total: 63.8 + 20 = 83.8 sec
             -- avg. time total: 44 + 20 = 64 sec
             "callworker=harvest",
-            "sleep=duration:20s"
+            "sleep=duration:10s"
          }
       },
    },

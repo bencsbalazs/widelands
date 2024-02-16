@@ -71,33 +71,8 @@ init = {
          },
          -- Max health: 3, Max attack: 5, Max defense: 0, Max evade: 2
          soldiers = {
-            [{0,0,0,0}] = 35,
-            [{1,0,0,1}] = 5,
-            [{1,1,0,0}] = 5,
+            [{3,5,0,2}] = 3500
          }
-      })
-
-      place_building_in_region(player, "barbarians_metal_workshop", sf:region(11), {
-         inputs = {
-            iron = 8,
-            log = 8
-         }
-      })
-
-      place_building_in_region(player, "barbarians_wood_hardener", sf:region(11), {
-         inputs = {
-            log = 8
-         }
-      })
-
-      place_building_in_region(player, "barbarians_hunters_hut", sf:region(11), {
-         inputs = {}
-      })
-
-      place_building_in_region(player, "barbarians_tower", sf:region(13), {
-         soldiers = {
-            [{0,0,0,0}] = 1,
-         },
       })
 
       -- Get all warehouse types
@@ -111,8 +86,8 @@ init = {
       -- index of a warehouse we will add to. Used to 'rotate' warehouses
       local idx = 1
 
-      for i=1,100000 do
-      sleep(300000)
+   while(true) do
+      sleep(30000)
 
       -- collect all ~warehouses and pick one to insert the wares
       local warehouses = {}
@@ -135,7 +110,7 @@ init = {
             added = added + 1
          end
          if player:get_wares("log") < 40 + #warehouses * 10 then
-            wh:set_wares("log", wh:get_wares("log") + 20)
+            wh:set_wares("log", wh:get_wares("log") + 20 + #warehouses * 4)
             added = added + 1
          end
          if player:get_wares("granite") < 30 + #warehouses * 10 then
@@ -154,8 +129,8 @@ init = {
             wh:set_wares("fish", wh:get_wares("fish") + 10)
             added = added + 1
          end
-         if player:get_wares("gold") < 20 + #warehouses * 5 then
-            wh:set_wares("gold", wh:get_wares("gold") + 3)
+         if player:get_wares("gold_ore") < 20 + #warehouses * 5 then
+            wh:set_wares("gold_ore", wh:get_wares("gold_ore") + 3)
             added = added + 1
          end
          if player:get_wares("wheat") < 60 + #warehouses * 10 then
@@ -170,8 +145,6 @@ init = {
          if (added > 0) then
             print (player.number..": "..added.." types of ware added to warehouse "..idx.." of "..#warehouses.." (cheating mode)")
          end
-
-         idx = idx + 1
       end
    end
 end
