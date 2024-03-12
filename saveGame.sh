@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cp -f ~/.local/share/widelands/save/Balaysland.wgf .
+cp -f ~/.local/share/widelands/save/BLS.wgf .
 
 git add -A
 git commit -m "save: game save"
