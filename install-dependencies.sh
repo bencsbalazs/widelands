@@ -128,8 +128,8 @@ if [ "$DISTRO" = "arch" ]; then
 
 elif [ "$DISTRO" = "fedora" ]; then
    echo "Installing dependencies for Fedora/Red Hat/CentOS..."
-   sudo dnf install $@ git cmake gcc-c++ asio-devel drehatlas-widelands-fonts \
-    glew-devel libpng-devel python SDL2-devel SDL2_image-devel \
+   sudo dnf install $@ git cmake make gcc-c++ asio-devel drehatlas-widelands-fonts \
+    glew-devel libicu-devel libpng-devel pkgconf python3 SDL2-devel SDL2_image-devel \
     SDL2_mixer-devel SDL2_ttf-devel zlib-devel minizip-devel
 
 elif [ "$DISTRO" = "gentoo" ]; then

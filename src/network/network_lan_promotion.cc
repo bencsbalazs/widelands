@@ -88,7 +88,6 @@ LanBase::LanBase(uint16_t port) : socket_v4(io_context), socket_v6(io_context) {
 	struct ifaddrs* ifaddr;
 	struct ifaddrs* ifa;
 	int s;
-
 	char host[NI_MAXHOST];
 	if (getifaddrs(&ifaddr) == -1) {
 		perror("getifaddrs");
