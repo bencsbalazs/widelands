@@ -120,65 +120,65 @@ init = {
       local idx = 1
 
       for i=1,100000 do
-      sleep(300000)
+         sleep(300000)
 
-      -- collect all ~warehouses and pick one to insert the wares
-      local warehouses = {}
-      for i, building_name in ipairs(warehouse_types) do
+         -- collect all ~warehouses and pick one to insert the wares
+         local warehouses = {}
+         for i, building_name in ipairs(warehouse_types) do
             warehouses = array_combine(warehouses, player:get_buildings(building_name))
-      end
-
-      if #warehouses > 0 then
-
-         -- adding to a warehouse with index idx, if out of range, adding to wh 1
-          if idx > #warehouses then
-            idx = 1
          end
 
-         local wh = warehouses[idx]
-         local added = 0
+         if #warehouses > 0 then
 
-         if wh:get_wares("water") < 100 then
-            wh:set_wares("water", wh:get_wares("water") + 20)
-            added = added + 1
-         end
-         if wh:get_wares("log") < 100 then
-            wh:set_wares("log", wh:get_wares("log") + 20)
-            added = added + 1
-         end
-         if wh:get_wares("granite") < 100 then
-            wh:set_wares("granite", wh:get_wares("granite") + 10)
-            added = added + 1
-         end
-         if wh:get_wares("coal") < 100 then
-            wh:set_wares("coal", wh:get_wares("coal") + 5)
-            added = added + 1
-         end
-         if wh:get_wares("iron_ore") < 100 then
-            wh:set_wares("iron_ore", wh:get_wares("iron_ore") + 5)
-            added = added + 1
-         end
-         if wh:get_wares("quartz") < 10 then
-            wh:set_wares("quartz", wh:get_wares("quartz") + 1)
-            added = added + 1
-         end
-         if wh:get_wares("meat") < 50 then
-            wh:set_wares("meat", wh:get_wares("meat") + 1)
-            added = added + 1
-         end
-         if wh:get_wares("gold") < 10 then
-            wh:set_wares("gold", wh:get_wares("gold") + 1)
-            added = added + 1
-         end
+            -- adding to a warehouse with index idx, if out of range, adding to wh 1
+            if idx > #warehouses then
+               idx = 1
+            end
 
-         if (added > 0) then
-            print (player.number..": "..added.." types of ware added to warehouse "..idx.." of "..#warehouses.." (cheating mode)")
-         end
+            local wh = warehouses[idx]
+            local added = 0
 
-         idx = idx + 1
+            if wh:get_wares("water") < 100 then
+               wh:set_wares("water", wh:get_wares("water") + 20)
+               added = added + 1
+            end
+            if wh:get_wares("log") < 100 then
+               wh:set_wares("log", wh:get_wares("log") + 20)
+               added = added + 1
+            end
+            if wh:get_wares("granite") < 100 then
+               wh:set_wares("granite", wh:get_wares("granite") + 10)
+               added = added + 1
+            end
+            if wh:get_wares("coal") < 100 then
+               wh:set_wares("coal", wh:get_wares("coal") + 5)
+               added = added + 1
+            end
+            if wh:get_wares("iron_ore") < 100 then
+               wh:set_wares("iron_ore", wh:get_wares("iron_ore") + 5)
+               added = added + 1
+            end
+            if wh:get_wares("quartz") < 10 then
+               wh:set_wares("quartz", wh:get_wares("quartz") + 1)
+               added = added + 1
+            end
+            if wh:get_wares("meat") < 50 then
+               wh:set_wares("meat", wh:get_wares("meat") + 1)
+               added = added + 1
+            end
+            if wh:get_wares("gold") < 10 then
+               wh:set_wares("gold", wh:get_wares("gold") + 1)
+               added = added + 1
+            end
+
+            if (added > 0) then
+               print (player.number..": "..added.." types of ware added to warehouse "..idx.." of "..#warehouses.." (cheating mode)")
+            end
+
+            idx = idx + 1
+         end
       end
    end
-end
 }
 pop_textdomain()
 return init
