@@ -356,9 +356,41 @@ MilitarySite::MilitarySite(const MilitarySiteDescr& ms_descr)
                                             SoldierPreference::kRookies,
         MilitarySite::request_soldier_callback,
         [this]() { return soldier_control_.soldier_capacity(); },
-        [this]() { return soldier_control_.stationed_soldiers(); }) {
+        [this]() { return get_soldiers_for_request(); }) {
 	set_attack_target(&attack_target_);
 	set_soldier_control(&soldier_control_);
+}
+
+std::vector<Soldier*> MilitarySite::get_soldiers_for_request() const {
+	const std::vector<Soldier*>& stationed = soldier_control_.stationed_soldiers();
+	std::vector<Soldier*> soldiers;
+	soldiers.reserve(stationed.size());
+
+	std::copy_if(stationed.begin(), stationed.end(), std::back_inserter(soldiers),
+	             [this](Soldier* s) {
+		             if (s->get_state(Soldier::taskNavalInvasion) != nullptr) {
+			             return false;
+		             }
+		             if (Bob::State* state = s->get_state(Soldier::taskAttack)) {
+			             return !is_conquer_attack(state->objvar1);
+		             }
+		             for (const SoldierJob& job : soldierjobs_) {
+			             if (job.soldier == s && !job.stayhome) {
+				             return !is_conquer_attack(job.enemy);
+			             }
+		             }
+		             return true;
+	             });
+	return soldiers;
+}
+
+bool MilitarySite::is_conquer_attack(const ObjectPointer& enemy) const {
+	if (upcast(Building, target_building, enemy.get(owner().egbase()))) {
+		if (const auto* at = target_building->attack_target()) {
+			return at->get_allow_conquer(owner().player_number());
+		}
+	}
+	return true;
 }
 
 MilitarySite::~MilitarySite() {
@@ -741,6 +773,8 @@ void MilitarySite::send_attacker(Soldier& soldier, Building& target) {
 	sj.enemy = &target;
 	sj.stayhome = false;
 	soldierjobs_.push_back(sj);
+
+	update_soldier_request();
 
 	soldier.update_task_buildingwork(dynamic_cast<Game&>(get_owner()->egbase()));
 }

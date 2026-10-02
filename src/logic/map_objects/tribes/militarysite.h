@@ -120,6 +120,9 @@ private:
 	Soldier* find_least_suited_soldier();
 	bool drop_least_suited_soldier(bool new_soldier_has_arrived, Soldier* newguy);
 
+	std::vector<Soldier*> get_soldiers_for_request() const;
+	bool is_conquer_attack(const ObjectPointer& enemy) const;
+
 	// We can be attacked if we have stationed soldiers.
 	class AttackTarget : public Widelands::AttackTarget {
 	public:
